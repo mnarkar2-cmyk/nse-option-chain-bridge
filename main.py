@@ -29,7 +29,7 @@ base_url = "https://www.nseindia.com"
 data_url = "https://www.nseindia.com/api/option-chain/indices?symbol=NIFTY"
 
 headers = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
     "Accept-Encoding": "gzip, deflate, br",
@@ -40,10 +40,10 @@ def fetch_and_push():
     while True:
         try:
             session = requests.Session()
-            # First hit the home page to get valid NSE cookies
+            # 1. Hit the homepage first to inherit valid cookies
             init_res = session.get(base_url, headers=headers, timeout=15)
             
-            # Use the captured cookies to pull the actual JSON data
+            # 2. Use those valid cookies to pull the actual API data
             response = session.get(data_url, headers=headers, timeout=15)
             
             if response.status_code == 200:
