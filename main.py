@@ -15,7 +15,7 @@ creds = Credentials.from_service_account_info(info, scopes=[
 client = gspread.authorize(creds)
 
 # Open your sheet (Change to your exact Google Sheet name)
-sheet = client.open("Untitled spreadsheet").sheet1  
+sheet = client.open("Option chain").sheet1  
 
 url = "https://www.nseindia.com/api/option-chain/indices?symbol=NIFTY"
 headers = {
